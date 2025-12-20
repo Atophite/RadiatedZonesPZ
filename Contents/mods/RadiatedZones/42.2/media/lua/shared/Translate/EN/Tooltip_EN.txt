@@ -1,0 +1,14 @@
+Tooltip_EN = {
+	Tooltip_item_geigerteller = "Stay vigilant for radiation! Equip on belt (right or left) or use Primary/Secondary slots. Remember to activate it and keep an eye on the battery life.",
+	Tooltip_item_iodine = "5-hour radiation protection pills. Heal radiation when taken every 12 hours.",
+	Tooltip_item_hazmat = "Hazmat suit provides full radiation protection. Check for any holes in the suit!",
+	Tooltip_item_empty_geigerteller = "An useless empty geiger teller. Use 4 batteries to fully charge it!",
+	Tooltip_item_airfilter = "An airfilter for gasmask. Use this to refill the air filter of a gas mask.",
+	Tooltip_item_nukesurivival_guide = "Radiation Protection and Survival Strategies"
+	Tooltip_item_luckysoda = "Drink and be more lucky in desperate times. Get more lucky to cure from radiation."
+	Tooltip_item_empty_gasmask = "An gas mask without a filter. Insert a filter to provide radiation protection."
+	Tooltip_item_improvised_mask = "An improvised mask to lightly protect you against radiation."
+	Tooltip_item_gasmask = "A Gas Mask, it does a good job to protect you from radiation."
+	Tooltip_item_civ_geigerteller = "A civillian geiger teller, not as accurate but it does it's job."
+	Tooltip_item_dosimeter = "Use if you want to know how much radiation you have taken."
+}

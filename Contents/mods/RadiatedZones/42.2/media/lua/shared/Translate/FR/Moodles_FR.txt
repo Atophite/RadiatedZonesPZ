@@ -1,0 +1,15 @@
+Moodles_FR = {
+    Moodles_Iodine_Good_lvl4 = "Protégé par l'Iode",
+    Moodles_Iodine_Good_desc_lvl4 = "Les effets de l'iode vous rendent plus résistant à la radiation.",
+    Moodles_Iodine_Bad_lvl3 = "Protégé par l'Iode",
+    Moodles_Iodine_Bad_desc_lvl3 = "Les effets de l'iode sont presque terminés.",
+
+    Moodles_Hazmat_Good_lvl4 = "Protégé par la Combinaison de Protection",
+    Moodles_Hazmat_Good_desc_lvl4 = "La combinaison de protection vous rend complètement résistant à la radiation.",
+
+    Moodles_GasMask_Good_lvl4 = "Protégé par le Masque à Gaz",
+    Moodles_GasMask_Good_desc_lvl4 = "Le masque à gaz vous rend plus résistant à la radiation.",
+
+    Moodles_LightMask_Good_lvl4 = "Protégé par le Masque Léger",
+    Moodles_LightMask_Good_desc_lvl4 = "Un masque vous rend légèrement plus résistant à la radiation.",
+}

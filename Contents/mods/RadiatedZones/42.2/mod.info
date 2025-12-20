@@ -1,0 +1,10 @@
+name=Radiated Zones
+id=RadiatedZones
+description=Gear up in hazmat suits and safeguard yourself with a trusty Geiger counter in this intense Project Zomboid mod
+tags=Zones, Radiation, Danger, Realism
+authors=Atophite
+require=\MoodleFramework
+poster=poster.png
+icon=poster-mini.png
+versionMin=42.13.0
+modVersion=2.0.0

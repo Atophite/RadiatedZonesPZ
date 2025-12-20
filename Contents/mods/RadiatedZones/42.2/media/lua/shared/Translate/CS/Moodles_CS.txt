@@ -1,0 +1,15 @@
+Moodles_CS {
+    Moodles_Iodine_Good_lvl4 = "Chr nØnì j¢dem",
+    Moodles_Iodine_Good_desc_lvl4 = "éŸinky j¢du v s Ÿin¡ odolnØjç¡mi v…Ÿi radiaŸn¡mu z ıen¡",
+    Moodles_Iodine_Bad_lvl3 = "Chr nØnì j¢dem",
+    Moodles_Iodine_Bad_desc_lvl3 = "éŸinky j¢du jsou t‚mØı u konce",
+
+    Moodles_Hazmat_Good_lvl4 = "Chr nØnì protiradiaŸn¡m oblekem",
+    Moodles_Hazmat_Good_desc_lvl4 = "ProtiradiaŸn¡ oblek v s Ÿin¡ plnØ odolnìm v…Ÿi radiaŸn¡mu z ıen¡",
+
+    Moodles_GasMask_Good_lvl4 = "Chr nØnì plynovou maskou",
+    Moodles_GasMask_Good_desc_lvl4 = "Plynov  maska v s Ÿin¡ odolnØjç¡mi v…Ÿi radiaŸn¡mu z ıen¡",
+
+    Moodles_LightMask_Good_lvl4 = "Chr nØnì maskou",
+    Moodles_LightMask_Good_desc_lvl4 = "Maska v s Ÿin¡ o nØco odolnØjç¡mi v…Ÿi radiaŸn¡mu z ıen¡",
+}

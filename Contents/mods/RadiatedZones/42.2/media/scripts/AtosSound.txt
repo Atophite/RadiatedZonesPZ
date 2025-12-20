@@ -1,0 +1,11 @@
+module RadiatedZones
+{
+	sound Geiger
+	{
+		category = Item,
+		clip
+		{
+			file = media/sound/geiger.wav,
+		}
+	}
+}

@@ -1,0 +1,15 @@
+Moodles_EN {
+    Moodles_Iodine_Good_lvl4 = "Iodine Protected",
+    Moodles_Iodine_Good_desc_lvl4 = "Effects of Iodine makes you more resistant to radiation",
+    Moodles_Iodine_Bad_lvl3 = "Iodine Protected",
+    Moodles_Iodine_Bad_desc_lvl3 = "Effects of Iodine is almost over",
+
+    Moodles_Hazmat_Good_lvl4 = "Hazmat Protected",
+    Moodles_Hazmat_Good_desc_lvl4 = "Hazmat suit makes you fully resistant to radiation",
+
+    Moodles_GasMask_Good_lvl4 = "GasMask Protected",
+    Moodles_GasMask_Good_desc_lvl4 = "Gas Mask makes you more resistant to radiation",
+
+    Moodles_LightMask_Good_lvl4 = "Mask Protected",
+    Moodles_LightMask_Good_desc_lvl4 = "A mask makes you a bit more resistant to radiation",
+}

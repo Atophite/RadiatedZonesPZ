@@ -1,0 +1,4 @@
+Sandbox_FR = {
+    Sandbox_RadiatedZones = "Radiated Zones",
+    Sandbox_RadiatedZones_SpawnWithGeigerTeller = "Apparaître avec un Compteur Geiger",
+}

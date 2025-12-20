@@ -1,0 +1,9 @@
+Recipes_CS = {
+    Recipe_Insert_Batteries_Into_Geiger_Teller = "Vlo§it baterie do Geigerova Ÿ¡taŸe",
+    Recipe_Remove_Batteries_From_Geiger_Teller = "Vyjmout baterie z Geigerova Ÿ¡taŸe",
+    Recipe_Insert_Gas_Mask_Filter = "Vlo§it filtr do plynov‚ masky",
+    Recipe_Remove_Gas_Mask_Filter = "Vyjmout filtr z plynov‚ masky",
+    Recipe_Craft_Improvised_Gas_Mask_Filter = "Improvizovanì filtr plynov‚ masky",
+    Recipe_Repair_Hazmat_Suit = "Opravit radiaŸn¡ oblek",
+    Recipe_Craft_Improvised_Mask = "Vyrobit l tkovou masku",
+}

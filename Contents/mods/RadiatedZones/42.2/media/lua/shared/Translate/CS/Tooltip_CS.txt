@@ -1,0 +1,12 @@
+Tooltip_CS = {
+	Tooltip_item_geigerteller = "Z…staåte ve stıehu kv…li radiaŸn¡mu z ıen¡! Vybavte se na opasku (pravì nebo levì) nebo pou§ijte prim rn¡/sekund rn¡ slot. Nezapomeåte jej aktivovat a sledujte vìdr§ baterie.",
+	Tooltip_item_iodine = "5 hodinov‚ pilulky na radiaŸn¡ ochranu. L‚Ÿ¡ z ıen¡ v pı¡padØ u§¡v n¡ ka§dìch 12 hodin.",
+	Tooltip_item_hazmat = "ProtiradiaŸn¡ oblek poskytuje plnou ochranu proti radiaŸn¡mu z ıen¡. Zkontrolujte, zda v obleku nejsou nØjak‚ d¡ry!",
+	Tooltip_item_empty_geigerteller = "Vybitì Geigerov… Ÿ¡taŸ kterì je nepou§itelnì. Pro pln‚ nabit¡ pou§ijte 4 baterie!",
+	Tooltip_item_airfilter = "Vzduchovì filtr pro plynovou masku. Pou§ijte jej k doplnØn¡ vzduchov‚ho filtru plynov‚ masky.",
+	Tooltip_item_nukesurivival_guide = "RadiaŸn¡ ochrana a strategie pıe§it¡"
+	Tooltip_item_luckysoda = "Pijte a mØjte v¡ce çtØst¡ v zoufalìch Ÿasech. Z¡skejte v¡ce çtØst¡ pıi l‚ŸbØ z radiace."
+	Tooltip_item_empty_gasmask = "Plynov  maska bez filtru. Vlo§te filtr pro ochranu pıed z ıen¡m."
+	Tooltip_item_improvised_mask = "Improvizovan  maska kter  v s lehce ochr n¡ pıed radiac¡."
+	Tooltip_item_gasmask = "Plynov  maska v s dobıe ochr n¡ pıed radiac¡."
+}

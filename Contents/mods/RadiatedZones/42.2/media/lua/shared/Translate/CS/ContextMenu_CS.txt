@@ -1,0 +1,17 @@
+ContextMenu_CS = {
+    ContextMenu_item_Iodine = "Vz¡t si pilulku",
+    ContextMenu_measure_radiation = "ZmØıen¡ tØlesn‚ radiace",
+    ContextMenu_check_geiger = "Pod¡vat se Geiger…v Ÿ¡taŸ"
+
+    ContextMenu_measure_body_radiation = "Moje £roveå radiace je: ",
+    ContextMenu_out_of_battery = "Geiger…v Ÿ¡taŸ je vybitì!",
+    ContextMenu_radiation_detected = "ZjiçtØna radiace!",
+    ContextMenu_radiation_not_detected = "Nebyla zjiçtØna radiace!",
+
+    ContextMenu_check_gasmask_filter = "Zkontrolovat filtr plynov‚ masky",
+    ContextMenu_filter_quality_good = "Kvalita filtru je DOBRµ",
+    ContextMenu_filter_quality_medium = "Kvalita filtru je STüEDNÖ",
+    ContextMenu_filter_quality_bad = "Kvalita filtru je æPATNµ",
+    ContextMenu_filter_quality_empty = "Kvalita filtru je PRµZDNí",
+
+}

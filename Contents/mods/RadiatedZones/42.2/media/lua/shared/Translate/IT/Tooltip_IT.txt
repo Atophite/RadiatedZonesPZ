@@ -1,0 +1,12 @@
+Tooltip_IT = {
+    Tooltip_item_geigerteller = "Rimani vigile per la radiazione! Equipaggialo sulla cintura (destra o sinistra) o usa gli slot Primario/Secondario. Ricorda di attivarlo e tieni d'occhio la durata della batteria.",
+    Tooltip_item_iodine = "Pastiglie di protezione dalla radiazione per 5 ore. Guarisce dalla radiazione quando assunte ogni 12 ore.",
+    Tooltip_item_hazmat = "La tuta di protezione offre una protezione totale dalla radiazione. Controlla se ci sono buchi nella tuta!",
+    Tooltip_item_empty_geigerteller = "Un contatore Geiger vuoto e inutile. Usa 4 batterie per caricarlo completamente!",
+    Tooltip_item_airfilter = "Un filtro dell'aria per la maschera antigas. Usalo per riempire il filtro dell'aria di una maschera antigas.",
+    Tooltip_item_nukesurivival_guide = "Protezione dalla radiazione e strategie di sopravvivenza",
+    Tooltip_item_luckysoda = "Bevi e sii più fortunato nei momenti disperati. Diventa più fortunato per guarire dalla radiazione.",
+    Tooltip_item_empty_gasmask = "Una maschera antigas senza filtro. Inserisci un filtro per fornire protezione dalla radiazione.",
+    Tooltip_item_improvised_mask = "Una maschera improvvisata per proteggerti leggermente dalla radiazione.",
+    Tooltip_item_gasmask = "Una maschera antigas che fa un buon lavoro nel proteggerti dalla radiazione.",
+}

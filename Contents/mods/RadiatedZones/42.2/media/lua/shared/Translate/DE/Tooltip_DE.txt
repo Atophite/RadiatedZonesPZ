@@ -1,0 +1,12 @@
+Tooltip_DE = {
+    Tooltip_item_geigerteller = "Seien Sie aufmerksam auf Strahlung! An Gürtel (rechts oder links) anbringen oder in den Haupt-/Sekundär-Slots verwenden. Denken Sie daran, es zu aktivieren und die Batterielebensdauer im Auge zu behalten.",
+    Tooltip_item_iodine = "Strahlungsschutzpillen für 5 Stunden. Heilen Strahlung, wenn alle 12 Stunden eingenommen.",
+    Tooltip_item_hazmat = "Der Hazmat-Anzug bietet vollen Strahlungsschutz. Überprüfen Sie auf Löcher im Anzug!",
+    Tooltip_item_empty_geigerteller = "Ein nutzloser leerer Geigerzähler. Verwenden Sie 4 Batterien, um ihn vollständig aufzuladen!",
+    Tooltip_item_airfilter = "Ein Luftfilter für die Gasmaske. Verwenden Sie dies, um den Luftfilter einer Gasmaske aufzufüllen.",
+    Tooltip_item_nukesurivival_guide = "Strahlungsschutz und Überlebensstrategien",
+    Tooltip_item_luckysoda = "Trinken und in verzweifelten Zeiten glücklicher sein. Werde glücklicher, um von Strahlung geheilt zu werden.",
+    Tooltip_item_empty_gasmask = "Eine Gasmaske ohne Filter. Setzen Sie einen Filter ein, um Strahlungsschutz zu bieten.",
+    Tooltip_item_improvised_mask = "Eine improvisierte Maske, um Sie leicht vor Strahlung zu schützen.",
+    Tooltip_item_gasmask = "Eine Gasmaske, die Sie gut vor Strahlung schützt.",
+}

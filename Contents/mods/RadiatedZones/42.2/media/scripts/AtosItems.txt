@@ -1,0 +1,228 @@
+module RadiatedZones {
+    item GeigerTeller
+    {
+        DisplayCategory = Electronics,
+        Weight  =   0.3,
+        Type = base:drainable,
+        ItemType =   base:drainable,
+        UseWhileEquipped	=	TRUE,
+        ActivatedItem	=	TRUE,
+        KeepOnDeplete = TRUE,
+        DisplayName =   Geiger Teller,
+        Icon            = Geigerteller,
+        AttachmentType = Walkie,
+        Tooltip = Tooltip_item_geigerteller,
+        StaticModel     = WalkieTalkieValue,
+        WorldStaticModel = Geigerteller,
+        ticksPerEquipUse = 6000,
+    }
+
+    item EmptyGeigerTeller
+    {
+        ItemType = base:normal,
+        DisplayCategory = Electronics,
+        Weight  =   0.3,
+        DisplayName =   Empty Geiger Teller,
+        Icon            = Geigerteller,
+        StaticModel     = WalkieTalkieValue,
+        WorldStaticModel = Geigerteller,
+        Tooltip = Tooltip_item_empty_geigerteller,
+    }
+
+    item Iodine {
+        DisplayCategory = FirstAid,
+        Weight  =   0.02,
+        ItemType =   base:food,
+        UseDelta    =   0.1,
+        Count = 6,
+        UseWhileEquipped    =   FALSE,
+        DisplayName =   Iodine Pills,
+        Icon    =   Iodine,
+        Tooltip = Tooltip_item_iodine,
+        StaticModel = PillBottle,
+        WorldStaticModel = Iodine,
+        Medical = TRUE,
+        OnEat = OnEat_Iodine,
+        EatType = popcan,
+        CustomContextMenu = item_Iodine,
+        HungerChange = +10,
+    }
+
+    item GasMaskFilter
+    {
+        DisplayCategory = Tool,
+        Weight  =   0.3,
+        ItemType =   base:drainable,
+        UseWhileEquipped	=	FALSE,
+        ActivatedItem	=	FALSE,
+        KeepOnDeplete = TRUE,
+        DisplayName =   Gas Mask Filter,
+        Icon            = Airfilter,
+        Tooltip = Tooltip_item_airfilter,
+        StaticModel     = Airfilter,
+        WorldStaticModel = Airfilter,
+    }
+
+    item ImprovisedGasMaskFilter
+        {
+            DisplayCategory = Tool,
+            Weight  =   0.3,
+            ItemType =   base:drainable,
+            UseWhileEquipped	=	FALSE,
+            ActivatedItem	=	FALSE,
+            KeepOnDeplete = TRUE,
+            DisplayName =   Improvised Gas Mask Filter,
+            Icon            = Airfilter,
+            Tooltip = Tooltip_item_airfilter,
+            StaticModel     = Airfilter,
+            WorldStaticModel = Airfilter,
+        }
+
+    item Hat_EmptyGasMask
+    {
+        DisplayCategory = Accessory,
+        ItemType = base:clothing,
+        DisplayName = Empty Gas Mask,
+        ClothingItem = Hat_GasMask,
+        BodyLocation = MaskEyes,
+        Icon = GasMask,
+        CanHaveHoles = false,
+        BloodLocation = Head,
+        Insulation = 0.75,
+        WindResistance = 0.60,
+        WaterResistance = 1.0,
+        Tags = GasMask,
+        Weight = 0.2,
+        Tooltip = Tooltip_item_empty_gasmask
+    }
+
+    item NukeSurvivalGuide
+    {
+        DisplayCategory = SkillBook,
+        Weight	=	0.1,
+        ItemType =	base:literature,
+        DisplayName	=	NukeSurvival Guide,
+        Icon	=	MagazineMechanics,
+        TeachedRecipes  =   Craft Improvised Gas Mask Filter,
+        ReplaceOnUse    =   NukeSurvivalGuide,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineMechanics,
+        Tooltip = Tooltip_item_nukesurivival_guide
+    }
+
+    item LuckySoda
+    {
+		DisplayName = Lucky Soda,
+		DisplayCategory = Food,
+		ItemType = base:food,
+		Weight = 0.2,
+		Icon = LuckySoda,
+		FoodType = SoftDrink,
+		CantBeFrozen = TRUE,
+		EatType = popcan,
+		HungerChange = -8,
+		ThirstChange = -60,
+		UnhappyChange = -10,
+		Calories = 140,
+		Carbohydrates = 39,
+		Lipids = 0,
+		Proteins = 0,
+		OnEat = OnEat_LuckySoda,
+		CustomContextMenu = Drink,
+		CustomEatSound = DrinkingFromCan,
+		StaticModel = PopCanDiet,
+		WorldStaticModel = LuckySoda,
+		Tooltip = Tooltip_item_luckysoda,
+		Tags = HasMetal,
+    }
+
+    item ImprovisedMask
+    {
+        DisplayCategory = Accessory,
+        ItemType = base:clothing,
+        DisplayName = Improvised Mask,
+        ClothingItem = Hat_BandanaMaskTINT,
+        BodyLocation = Mask,
+        Icon = Handkerchief,
+        CanHaveHoles = false,
+        ChanceToFall = 30,
+        Insulation = 0.10,
+        Weight = 0.1,
+        Tooltip = Tooltip_item_improvised_mask,
+    }
+
+    item CivGeigerTeller
+    {
+        DisplayCategory = Electronics,
+        Weight  =   0.5,
+        ItemType    =   base:drainable,
+        UseWhileEquipped	=	TRUE,
+        ActivatedItem	=	TRUE,
+        KeepOnDeplete = TRUE,
+        DisplayName =   Civillian Geiger Teller,
+        Icon            = CivGeigerteller,
+        Tooltip = Tooltip_item_civ_geigerteller,
+        StaticModel     = WalkieTalkieValue,
+        WorldStaticModel = CivGeigerteller,
+        ticksPerEquipUse = 5000,
+    }
+
+    item DosiMeter
+    {
+        DisplayCategory = Electronics,
+        Weight  =   0.2,
+        ItemType =   base:drainable,
+        AttachmentType = Walkie,
+        UseWhileEquipped	=	TRUE,
+        ActivatedItem	=	TRUE,
+        KeepOnDeplete = TRUE,
+        DisplayName =   Dosi Meter,
+        Icon            = Dosimeter,
+        Tooltip = Tooltip_item_dosimeter,
+        StaticModel     = WalkieTalkieValue,
+        WorldStaticModel = CivGeigerteller,
+        ticksPerEquipUse = 5000,
+    }
+
+
+
+}
+
+module Base {
+    item HazmatSuit {
+        DisplayCategory = Clothing,
+        ItemType = base:clothing,
+        DisplayName = Hazmat Suit,
+        ClothingItem = HazmatSuit,
+        BodyLocation = FullSuitHead,
+        Icon = BoilerSuitOrange,
+        BloodLocation = Trousers;Jumper;Head;Neck;Hands;Shoes,
+        Icon = Hazmatsuit,
+        ScratchDefense = 15,
+        Weight = 10,
+        BiteDefense = 5,
+        Insulation = 0.65,
+        WindResistance = 0.9,
+        WorldStaticModel = Hazmat_Ground,
+        Tags = GasMask;HazmatSuit,
+        Tooltip = Tooltip_item_hazmat,
+    }
+
+    item Hat_GasMask
+    	{
+    	    DisplayCategory = Accessory,
+    		ItemType = base:clothing,
+    		DisplayName = Gas Mask,
+    		ClothingItem = Hat_GasMask,
+    		BodyLocation = MaskEyes,
+    		Icon = GasMask,
+    		CanHaveHoles = false,
+            BloodLocation = Head,
+            Insulation = 0.75,
+            WindResistance = 0.60,
+            WaterResistance = 1.0,
+    		Tags = GasMask,
+    		Weight = 0.5,
+    		Tooltip = Tooltip_item_gasmask,
+    	}
+}

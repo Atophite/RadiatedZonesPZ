@@ -1,0 +1,92 @@
+module RadiatedZones {
+
+	recipe Insert Batteries Into Geiger Teller
+    {
+        destroy GeigerTeller/EmptyGeigerTeller,
+        destroy Battery = 4,
+
+        Result:GeigerTeller,
+        Time:200.0,
+        Category:Electrical,
+        OnTest:RadiatedZones.OnTest.GeigerTellerBatteriesInsert,
+        OnCreate:RadiatedZones.OnCreate.GeigerTellerBatteriesInsert,
+    }
+
+    recipe Remove Batteries From Geiger Teller
+    {
+        keep GeigerTeller,
+
+        Result:Battery,
+        Time:200.0,
+        Category:Electrical,
+        OnTest:RadiatedZones.OnTest.GeigerTellerBatteriesRemove,
+        OnCreate:RadiatedZones.OnCreate.GeigerTellerBatteriesRemove,
+    }
+
+    recipe Remove Gas Mask Filter
+    {
+        Hat_GasMask,
+
+        Result:GasMaskFilter,
+        Time:150.0,
+        Category:Survivalist,
+        OnTest:RadiatedZones.OnTest.GasMaskAirFilterRemove,
+        OnCreate:RadiatedZones.OnCreate.GasMaskAirFilterRemove,
+        NoBrokenItems:false,
+    }
+
+    recipe Insert Gas Mask Filter
+    {
+        destroy Hat_EmptyGasMask,
+        destroy GasMaskFilter/ImprovisedGasMaskFilter,
+
+        Result:Hat_GasMask,
+        Time:150.0,
+        Category:Survivalist,
+        OnTest:RadiatedZones.OnTest.GasMaskAirFilterInsert,
+        OnCreate:RadiatedZones.OnCreate.GasMaskAirFilterInsert,
+        NoBrokenItems:false,
+    }
+
+    recipe Repair Hazmat Suit
+        {
+            keep Scissors,
+            HazmatSuit/MysteriousHazmat,
+            DuctTape=2,
+
+            Result:HazmatSuit,
+            Time:450.0,
+            Category:Survivalist,
+            OnTest:RadiatedZones.OnTest.RepairHazmatSuit,
+            OnCreate:RadiatedZones.OnCreate.RepairHazmatSuit,
+            Sound:PutItemInBag,
+            RemoveResultItem:true,
+        }
+
+    recipe Craft Improvised Gas Mask Filter
+        {
+            keep Scissors,
+            WaterBottleEmpty,
+            RippedSheets=2,
+    	    RubberBand,
+            CottonBalls=4,
+            DuctTape=2,
+            Charcoal=1,
+            Result:GasMaskFilter,
+            NeedToBeLearn:true,
+            Time:250.0,
+            Category:Survivalist,
+            IsHidden:false,
+        }
+
+    recipe Craft Improvised Mask
+    {
+        RippedSheets,
+
+        Result:ImprovisedMask,
+        Time:80.0,
+        Category:Survivalist,
+        IsHidden:false,
+    }
+
+}

@@ -157,5 +157,5 @@ luac.out
 *.x86_64
 *.hex
 
-
 # End of https://www.toptal.com/developers/gitignore/api/lua,intellij
+Contents/mods/RadiatedZones/.vscode/settings.json

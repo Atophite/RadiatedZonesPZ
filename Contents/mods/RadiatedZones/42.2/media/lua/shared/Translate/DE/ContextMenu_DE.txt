@@ -1,0 +1,16 @@
+ContextMenu_DE = {
+    ContextMenu_item_Iodine = "Pille nehmen",
+    ContextMenu_measure_radiation = "Körperstrahlung messen",
+    ContextMenu_check_geiger = "Geigerzähler anzeigen",
+
+    ContextMenu_measure_body_radiation = "Mein Strahlungsniveau beträgt: ",
+    ContextMenu_out_of_battery = "Geigerzähler ist entladen!",
+    ContextMenu_radiation_detected = "Strahlung erkannt!",
+    ContextMenu_radiation_not_detected = "Keine Strahlung erkannt!",
+
+    ContextMenu_check_gasmask_filter = "Gas Maskenfilter überprüfen",
+    ContextMenu_filter_quality_good = "Die Qualität des Filters ist GUT",
+    ContextMenu_filter_quality_medium = "Die Qualität des Filters ist MITTEL",
+    ContextMenu_filter_quality_bad = "Die Qualität des Filters ist SCHLECHT",
+    ContextMenu_filter_quality_empty = "Die Qualität des Filters ist LEER",
+}

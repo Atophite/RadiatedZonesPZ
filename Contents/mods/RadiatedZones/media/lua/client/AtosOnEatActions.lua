@@ -7,7 +7,6 @@ local AtosClient = AtosRadiatedZones.Client
 
 
 function OnEat_Iodine(food, player, percentage)
-
     local rad = AtosClient:getRadiation()
     local radHeal = 100
     local currentWorldHour = GameTime:getInstance():getWorldAgeHours()
@@ -15,9 +14,7 @@ function OnEat_Iodine(food, player, percentage)
 
     AtosClient:setIsProtectedByPillsSince(GameTime:getInstance():getWorldAgeHours())
 
-    if isProtectedByPillsHours >= 12  then
-
-
+    if isProtectedByPillsHours >= 12 then
         -- Pills cannot be spammed and player needs to wait 12 hours before player can take a new pill
         if rad <= radHeal then
             AtosClient:setRadiation(1)
@@ -36,9 +33,7 @@ function OnEat_LuckySoda(food, player, percentage)
         AtosClient:setHasLuckySodaUsage(true)
         player:Say("I'm gonna get lucky today!")
     end
-
 end
-
 
 ---- OVERRIDE----------------------------------------------------------------------------------
 ----- OnEat_Cigarettes IS NOT RECIPE CODE.  IT IS CALLED BY IsoGameCharacter.Eat() -----
@@ -78,5 +73,4 @@ function OnEat_Cigarettes(food, character, percent)
     local newRadiationValue = (getCurrentRadiation - radiationReductionFromSmoking)
 
     AtosClient:setRadiation(newRadiationValue) -- smoking removes 2 radiation
-
 end

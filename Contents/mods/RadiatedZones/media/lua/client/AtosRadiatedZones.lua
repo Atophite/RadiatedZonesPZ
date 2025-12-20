@@ -36,7 +36,7 @@ local function onGameStart()
 	--This isnt even working lol
 	--if client is online send request to server
 	if isClient() then
-		print("requesting zones 1")
+		print("requesting zones")
 		sendClientCommand("Atos", "RequestAllZones", {
 			player = player
 		});

@@ -1,0 +1,16 @@
+ContextMenu_IT = {
+    ContextMenu_item_Iodine = "Prendi la Pasticca",
+    ContextMenu_measure_radiation = "Misura Radiazione Corporea",
+    ContextMenu_check_geiger = "Guarda il Contatore Geiger",
+
+    ContextMenu_measure_body_radiation = "Il mio livello di radiazione è: ",
+    ContextMenu_out_of_battery = "Il Contatore Geiger è scarico!",
+    ContextMenu_radiation_detected = "Rilevata radiazione!",
+    ContextMenu_radiation_not_detected = "Nessuna radiazione rilevata!",
+
+    ContextMenu_check_gasmask_filter = "Verifica il Filtro della Maschera Antigas",
+    ContextMenu_filter_quality_good = "La qualità del filtro è BUONA",
+    ContextMenu_filter_quality_medium = "La qualità del filtro è MEDIA",
+    ContextMenu_filter_quality_bad = "La qualità del filtro è CATTIVA",
+    ContextMenu_filter_quality_empty = "La qualità del filtro è VUOTA",
+}

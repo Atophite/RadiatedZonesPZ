@@ -1,0 +1,9 @@
+VERSION = 1,
+
+option RadiatedZones.SpawnWithGeigerTeller
+{
+    type = boolean,
+    default = false,
+    page = RadiatedZones,
+    translation = RadiatedZones_SpawnWithGeigerTeller,
+}

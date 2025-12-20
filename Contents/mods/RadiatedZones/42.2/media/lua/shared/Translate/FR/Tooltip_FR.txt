@@ -1,0 +1,12 @@
+Tooltip_FR = {
+    Tooltip_item_geigerteller = "Restez vigilant face à la radiation ! Équipez-le à la ceinture (droite ou gauche) ou utilisez les emplacements Principal/Secondaire. N'oubliez pas de l'activer et surveillez la durée de vie de la batterie.",
+    Tooltip_item_iodine = "Pastilles de protection contre la radiation pendant 5 heures. Guérit la radiation lorsqu'elle est prise toutes les 12 heures.",
+    Tooltip_item_hazmat = "La combinaison de protection offre une protection totale contre la radiation. Vérifiez s'il y a des trous dans la combinaison !",
+    Tooltip_item_empty_geigerteller = "Un compteur Geiger vide et inutile. Utilisez 4 piles pour le charger complètement !",
+    Tooltip_item_airfilter = "Un filtre à air pour le masque à gaz. Utilisez-le pour remplir le filtre à air d'un masque à gaz.",
+    Tooltip_item_nukesurivival_guide = "Protection contre la radiation et stratégies de survie",
+    Tooltip_item_luckysoda = "Buvez et ayez plus de chance en période désespérée. Devenez plus chanceux pour guérir de la radiation.",
+    Tooltip_item_empty_gasmask = "Un masque à gaz sans filtre. Insérez un filtre pour fournir une protection contre la radiation.",
+    Tooltip_item_improvised_mask = "Un masque improvisé pour vous protéger légèrement contre la radiation.",
+    Tooltip_item_gasmask = "Un masque à gaz qui fait un bon travail pour vous protéger de la radiation.",
+}

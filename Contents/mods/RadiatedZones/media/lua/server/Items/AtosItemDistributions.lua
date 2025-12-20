@@ -297,7 +297,7 @@ table.insert(ProceduralDistributions.list["CrateCarpentry"].items, "RadiatedZone
 table.insert(ProceduralDistributions.list["CrateCarpentry"].items, 3);
 
 --WardrobeMan
-table.insert(ProceduralDistributions.list["WardrobeMan"].items, "Base.HazmatSuit");
+-- table.insert(ProceduralDistributions.list["WardrobeMan"].items, "Base.HazmatSuit");
 table.insert(ProceduralDistributions.list["WardrobeMan"].items, 0.1);
 table.insert(ProceduralDistributions.list["WardrobeMan"].items, "Hat_GasMask");
 table.insert(ProceduralDistributions.list["WardrobeMan"].items, 0.25);
