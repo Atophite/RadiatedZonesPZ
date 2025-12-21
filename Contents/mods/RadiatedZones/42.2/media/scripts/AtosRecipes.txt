@@ -1,92 +1,125 @@
 module RadiatedZones {
 
-	recipe Insert Batteries Into Geiger Teller
+    craftRecipe InsertBatteriesIntoGeigerTeller
     {
-        destroy GeigerTeller/EmptyGeigerTeller,
-        destroy Battery = 4,
+        timedAction = Making,
+        time = 200,
+        Category = Electrical,
+        OnTest = RadiatedZones.OnTest.GeigerTellerBatteriesInsert,
+        OnCreate = RadiatedZones.OnCreate.GeigerTellerBatteriesInsert,
+        Tags = InHandCraft;CanBeDoneInDark,
 
-        Result:GeigerTeller,
-        Time:200.0,
-        Category:Electrical,
-        OnTest:RadiatedZones.OnTest.GeigerTellerBatteriesInsert,
-        OnCreate:RadiatedZones.OnCreate.GeigerTellerBatteriesInsert,
-    }
-
-    recipe Remove Batteries From Geiger Teller
-    {
-        keep GeigerTeller,
-
-        Result:Battery,
-        Time:200.0,
-        Category:Electrical,
-        OnTest:RadiatedZones.OnTest.GeigerTellerBatteriesRemove,
-        OnCreate:RadiatedZones.OnCreate.GeigerTellerBatteriesRemove,
-    }
-
-    recipe Remove Gas Mask Filter
-    {
-        Hat_GasMask,
-
-        Result:GasMaskFilter,
-        Time:150.0,
-        Category:Survivalist,
-        OnTest:RadiatedZones.OnTest.GasMaskAirFilterRemove,
-        OnCreate:RadiatedZones.OnCreate.GasMaskAirFilterRemove,
-        NoBrokenItems:false,
-    }
-
-    recipe Insert Gas Mask Filter
-    {
-        destroy Hat_EmptyGasMask,
-        destroy GasMaskFilter/ImprovisedGasMaskFilter,
-
-        Result:Hat_GasMask,
-        Time:150.0,
-        Category:Survivalist,
-        OnTest:RadiatedZones.OnTest.GasMaskAirFilterInsert,
-        OnCreate:RadiatedZones.OnCreate.GasMaskAirFilterInsert,
-        NoBrokenItems:false,
-    }
-
-    recipe Repair Hazmat Suit
+        inputs
         {
-            keep Scissors,
-            HazmatSuit/MysteriousHazmat,
-            DuctTape=2,
-
-            Result:HazmatSuit,
-            Time:450.0,
-            Category:Survivalist,
-            OnTest:RadiatedZones.OnTest.RepairHazmatSuit,
-            OnCreate:RadiatedZones.OnCreate.RepairHazmatSuit,
-            Sound:PutItemInBag,
-            RemoveResultItem:true,
+            item 1 [RadiatedZones.EmptyGeigerTeller] mode:destroy,
+            item 4 [Base.Battery] mode:destroy,
         }
 
-    recipe Craft Improvised Gas Mask Filter
+        outputs
         {
-            keep Scissors,
-            WaterBottleEmpty,
-            RippedSheets=2,
-    	    RubberBand,
-            CottonBalls=4,
-            DuctTape=2,
-            Charcoal=1,
-            Result:GasMaskFilter,
-            NeedToBeLearn:true,
-            Time:250.0,
-            Category:Survivalist,
-            IsHidden:false,
+            item 1 RadiatedZones.GeigerTeller,
+        }
+    }
+
+    craftRecipe RemoveBatteriesFromGeigerTeller
+    {
+        timedAction = DismantleElectrical,
+        time = 200,
+        Category = Electrical,
+        OnTest = RadiatedZones.OnTest.GeigerTellerBatteriesRemove,
+        OnCreate = RadiatedZones.OnCreate.GeigerTellerBatteriesRemove,
+        Tags = InHandCraft;CanBeDoneInDark,
+
+        inputs
+        {
+            item 1 [RadiatedZones.GeigerTeller] mode:keep,
         }
 
-    recipe Craft Improvised Mask
-    {
-        RippedSheets,
+        outputs
+        {
+            item 1 Base.Battery,
+        }
+    }
 
-        Result:ImprovisedMask,
-        Time:80.0,
-        Category:Survivalist,
-        IsHidden:false,
+    craftRecipe RemoveGasMaskFilter
+    {
+        timedAction = Making,
+        time = 150,
+        Category = Miscellaneous,
+        OnTest = RadiatedZones.OnTest.GasMaskAirFilterRemove,
+        OnCreate = RadiatedZones.OnCreate.GasMaskAirFilterRemove,
+        Tags = InHandCraft,
+
+        inputs
+        {
+            item 1 [Base.Hat_GasMask],
+        }
+
+        outputs
+        {
+            item 1 Base.Hat_GasMask,
+        }
+    }
+
+    craftRecipe InsertGasMaskFilter
+    {
+        timedAction = Making,
+        time = 150,
+        Category = Miscellaneous,
+        OnTest = RadiatedZones.OnTest.GasMaskAirFilterInsert,
+        OnCreate = RadiatedZones.OnCreate.GasMaskAirFilterInsert,
+        Tags = InHandCraft,
+
+        inputs
+        {
+            item 1 [Base.Hat_GasMask_nofilter] mode:destroy,
+            item 1 [Base.GasmaskFilter;RadiatedZones.ImprovisedGasMaskFilter] mode:destroy,
+        }
+
+        outputs
+        {
+            item 1 Base.Hat_GasMask,
+        }
+    }
+
+    craftRecipe RepairHazmatSuit
+    {
+        timedAction = Making,
+        time = 450,
+        Category = Miscellaneous,
+        OnTest = RadiatedZones.OnTest.RepairHazmatSuit,
+        OnCreate = RadiatedZones.OnCreate.RepairHazmatSuit,
+        Tags = InHandCraft,
+
+        inputs
+        {
+            item 1 [Base.Scissors] mode:keep,
+            item 1 [Base.HazmatSuit],
+            item 2 [Base.DuctTape],
+        }
+
+        outputs
+        {
+            item 1 Base.HazmatSuit,
+        }
+    }
+
+    craftRecipe CraftImprovisedMask
+    {
+        timedAction = Making,
+        time = 80,
+        Category = Miscellaneous,
+        Tags = InHandCraft,
+
+        inputs
+        {
+            item 1 [Base.RippedSheets],
+        }
+
+        outputs
+        {
+            item 1 RadiatedZones.ImprovisedMask,
+        }
     }
 
 }

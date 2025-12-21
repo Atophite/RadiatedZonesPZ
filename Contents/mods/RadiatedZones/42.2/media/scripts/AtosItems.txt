@@ -93,7 +93,7 @@ module RadiatedZones {
         WaterResistance = 1.0,
         Tags = GasMask,
         Weight = 0.2,
-        Tooltip = Tooltip_item_empty_gasmask
+        Tooltip = Tooltip_item_empty_gasmask,
     }
 
     item NukeSurvivalGuide
@@ -107,7 +107,7 @@ module RadiatedZones {
         ReplaceOnUse    =   NukeSurvivalGuide,
         StaticModel = Magazine,
         WorldStaticModel = MagazineMechanics,
-        Tooltip = Tooltip_item_nukesurivival_guide
+        Tooltip = Tooltip_item_nukesurivival_guide,
     }
 
     item LuckySoda

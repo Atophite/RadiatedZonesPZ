@@ -10,7 +10,7 @@ AtosIsCheckGeigerAction = ISBaseTimedAction:derive("AtosIsCheckGeigerAction");
 local AtosClient = AtosRadiatedZones.Client
 
 function AtosIsCheckGeigerAction:isValid() -- Check if the action can be done
-    local currentUseDelta = self.item:getUsedDelta()
+local currentUseDelta = self.item:getUseDelta()
 
     if currentUseDelta <= 0 then
         self.character:Say(getText("ContextMenu_out_of_battery"))
@@ -44,12 +44,12 @@ function AtosIsCheckGeigerAction:perform() -- Trigger when the action is complet
         self.character:Say(getText("ContextMenu_radiation_not_detected"))
     end
 
-    local currentUseDelta = self.item:getUsedDelta()
+    local currentUseDelta = self.item:getUseDelta()
     local deltaUsage = 0.01
 
-    self.item:setUsedDelta(currentUseDelta - deltaUsage)
+    self.item:setUseDelta(currentUseDelta - deltaUsage)
 
-    local newCurrentUseDelta = self.item:getUsedDelta()
+    local newCurrentUseDelta = self.item:getUseDelta()
 
     if newCurrentUseDelta <= 0 then
         self.item:setReplaceOnUse("EmptyGeigerTeller")

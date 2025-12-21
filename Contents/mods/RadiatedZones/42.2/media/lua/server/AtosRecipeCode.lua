@@ -44,30 +44,33 @@ function RadiatedZones.OnCreate.GeigerTellerBatteriesInsert(items, result, playe
 end
 
 -- Return true if recipe is valid, false otherwise
-function RadiatedZones.OnTest.GeigerTellerBatteriesRemove(sourceItem, result)
-    return sourceItem:getUsedDelta() > 0;
+function RadiatedZones.OnTest.GeigerTellerBatteriesRemove(sourceItem)
+    return sourceItem:getCurrentUsesFloat() > 0;
 end
 
-function RadiatedZones.OnCreate.GeigerTellerBatteriesRemove(items, result, player)
+function RadiatedZones.OnCreate.GeigerTellerBatteriesRemove(params)
+    local inputItems = params:getAllInputItems()
+    if not inputItems or inputItems:size() == 0 then return end
 
-    for i=0, items:size()-1 do
-        local item = items:get(i)
-        if item:getType() == "GeigerTeller" then
+    local geiger = inputItems:get(0)
+    if geiger:getType() ~= "GeigerTeller" then return end
 
-            --Unfortunately if the result of the recipe is 4 batteries the code sees it as one battery instead of 4.
-            --So I have to give the 3 batteries manually in an ugly way
-            local battery1 = player:getInventory():AddItem("Battery")
-            local battery2 = player:getInventory():AddItem("Battery")
-            local battery3 = player:getInventory():AddItem("Battery")
-            battery1:setUsedDelta(item:getUsedDelta())
-            battery2:setUsedDelta(item:getUsedDelta())
-            battery3:setUsedDelta(item:getUsedDelta())
-            result:setUsedDelta(item:getUsedDelta())
+    local createdItems = params:getAllCreatedItems()
+    local batteryCount = createdItems:size()
+    if batteryCount == 0 then return end
 
-            -- then we empty the geiger teller used delta (his energy/battery)
-            item:setUsedDelta(0);
-        end
+    local totalUses = geiger:getCurrentUsesFloat()
+    if totalUses <= 0 then return end
+
+    local usesPerBattery = totalUses / batteryCount
+
+    for i = 0, batteryCount - 1 do
+        local battery = createdItems:get(i)
+        battery:setCurrentUsesFloat(usesPerBattery)
     end
+
+    -- Drain the Geiger Teller after distribution
+    geiger:setCurrentUsesFloat(0)
 end
 
 function RadiatedZones.OnTest.GasMaskAirFilterInsert(sourceItem, result)

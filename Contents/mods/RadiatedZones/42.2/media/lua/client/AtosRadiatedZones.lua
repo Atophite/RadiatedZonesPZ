@@ -385,7 +385,9 @@ function AtosClient:calculateRadiation()
 
 
 	local function setSickness(sicknessLevel)
-		-- player:getBodyDamage():setFakeInfectionLevel(sicknessLevel)
+		return
+		-- TODO rewrite damage system
+		-- player:setCorpseSicknessRate(50)
 	end
 
 	if isInZone then
@@ -415,8 +417,7 @@ function AtosClient:calculateRadiation()
 	if(playerRadiation > 2000) then
 
 		--When player reaches 2000 RADS, player will die
-		player:getBodyDamage():setFoodSicknessLevel(100)
-
+		setSickness(100)
 	elseif playerRadiation > 1000 then
 		setSickness(50)
 
@@ -436,6 +437,7 @@ end
 
 function AtosClient:playSound()
 	local player = getPlayer()
+
 	if geigerSound == nil then
 		geigerSound = player:playSoundLocal("Geiger")
 	elseif geigerSound ~= nil and not player:getEmitter():isPlaying("Geiger") and AtosClient:isGeigerEquipped(player) == true then

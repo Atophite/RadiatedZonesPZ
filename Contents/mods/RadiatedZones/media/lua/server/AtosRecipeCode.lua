@@ -13,8 +13,8 @@ local AtosConstants = AtosRadiatedZones.Constants
 
 local function addExistingItemType(scriptItems, type)
     local all = getScriptManager():getItemsByType(type)
-    for i=1,all:size() do
-        local scriptItem = all:get(i-1)
+    for i = 1, all:size() do
+        local scriptItem = all:get(i - 1)
         if not scriptItems:contains(scriptItem) then
             scriptItems:add(scriptItem)
         end
@@ -31,10 +31,9 @@ function RadiatedZones.OnTest.GeigerTellerBatteriesInsert(sourceItem, result)
 end
 
 function RadiatedZones.OnCreate.GeigerTellerBatteriesInsert(items, result, player)
-
     local totalDelta = 0
 
-    for i=0, items:size()-1 do
+    for i = 0, items:size() - 1 do
         -- we found the battery, we change his used delta according to the battery
         if items:get(i):getType() == "Battery" then
             totalDelta = totalDelta + items:get(i):getUsedDelta() / 4
@@ -49,11 +48,9 @@ function RadiatedZones.OnTest.GeigerTellerBatteriesRemove(sourceItem, result)
 end
 
 function RadiatedZones.OnCreate.GeigerTellerBatteriesRemove(items, result, player)
-
-    for i=0, items:size()-1 do
+    for i = 0, items:size() - 1 do
         local item = items:get(i)
         if item:getType() == "GeigerTeller" then
-
             --Unfortunately if the result of the recipe is 4 batteries the code sees it as one battery instead of 4.
             --So I have to give the 3 batteries manually in an ugly way
             local battery1 = player:getInventory():AddItem("Battery")
@@ -75,8 +72,7 @@ function RadiatedZones.OnTest.GasMaskAirFilterInsert(sourceItem, result)
 end
 
 function RadiatedZones.OnCreate.GasMaskAirFilterInsert(items, result, player)
-
-    for i=0, items:size()-1 do
+    for i = 0, items:size() - 1 do
         local item = items:get(i)
         if items:get(i):getType() == "GasMaskFilter" or items:get(i):getType() == "ImprovisedGasMaskFilter" then
             --AtosClient:setUsedDelta(result, item:getUsedDelta() * 100)
@@ -85,19 +81,16 @@ function RadiatedZones.OnCreate.GasMaskAirFilterInsert(items, result, player)
             AtosClient:setFilterTicks(result, AtosClient:getFilterTicks(item))
         end
     end
-
 end
 
 function RadiatedZones.OnTest.GasMaskAirFilterRemove(sourceItem, result)
     return true
-
 end
 
 function RadiatedZones.OnCreate.GasMaskAirFilterRemove(items, result, player)
-    for i=0, items:size()-1 do
+    for i = 0, items:size() - 1 do
         local item = items:get(i)
         if item:getClothingItemName() == "Hat_GasMask" then
-
             -- Fill the air filter with useddelta from gasmask
             --result:setUsedDelta(getUsedDeltaFromModData(item))
 
@@ -106,9 +99,8 @@ function RadiatedZones.OnCreate.GasMaskAirFilterRemove(items, result, player)
             local gasMask = player:getInventory():AddItem("RadiatedZones.Hat_EmptyGasMask")
             gasMask:setCondition(0)
             --result:setUsedDelta(AtosClient:getUsedDelta(item)/100)
-            result:setUsedDelta(item:getCondition()/10)
+            result:setUsedDelta(item:getCondition() / 10)
             AtosClient:setFilterTicks(result, AtosClient:getFilterTicks(item))
-
         end
     end
 end
@@ -152,12 +144,9 @@ function RadiatedZones.OnCreate.RepairHazmatSuit(items, result, player)
 end
 
 function RadiatedZones.GetItemTypes.Mask(scriptItems)
-
     for itemName, protectionType in pairs(AtosConstants.protectionTypeMap) do
         if protectionType == "GasMask" then
             addExistingItemType(scriptItems, itemName)
-
         end
     end
-
 end

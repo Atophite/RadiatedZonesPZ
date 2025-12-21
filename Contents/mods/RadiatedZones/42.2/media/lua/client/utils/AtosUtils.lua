@@ -59,9 +59,10 @@ function AtosClient:isGeigerEquipped(player)
 
 
    for count = 0, attachedItems:size() - 1 do
-      if attachedItems:getItemByIndex(count):getName() == "Geiger Teller"
+
+      if attachedItems:getItemByIndex(count):getType() == "GeigerTeller"
          and attachedItems:getItemByIndex(count):isActivated()
-         and attachedItems:getItemByIndex(count):getUsedDelta() > 0
+         and attachedItems:getItemByIndex(count):getUseDelta() > 0
       then
             return true
       end

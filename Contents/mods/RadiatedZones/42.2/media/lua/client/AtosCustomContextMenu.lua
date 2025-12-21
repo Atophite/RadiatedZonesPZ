@@ -6,31 +6,21 @@
 local AtosConstants = AtosRadiatedZones.Constants
 
 local function doMenu(player, context, items)
-    -- dump(items)
     for i, v in ipairs(items) do
-        local item = v;
-        print(item:getFullType())
-        -- dump(item)
-        -- if not instanceof(v, "InventoryItem") then
-        --     item = v.items[1];
-        -- end
+        local item = v.items[1]
+        local itemName = v.name
+        local protectionTypeByMap = AtosConstants.protectionTypeMap[itemType]
+        if itemName then
+            if itemName == "Geiger Teller" then
+                if item:getUseDelta() then
+                    context:addOption(getText("ContextMenu_measure_radiation"), item, measureRadiation, player);
+                    context:addOption(getText("ContextMenu_check_geiger"), item, lookAtGeiger, player);
+                end
+            elseif protectionTypeByMap == "GasMask" then
+                context:addOption(getText("ContextMenu_check_gasmask_filter"), item, checkGasMaskFilter, player);
+            end
+        end
     end
-
-    --     local itemType = item:getType()
-    --     local protectionTypeByMap = AtosConstants.protectionTypeMap[itemType]
-
-    --     print(item)
-    --     if itemType then
-    --         if itemType == "GeigerTeller" then
-    --             if item:getUsedDelta() > 0 then
-    --                 context:addOption(getText("ContextMenu_measure_radiation"), item, measureRadiation, player);
-    --                 context:addOption(getText("ContextMenu_check_geiger"), item, lookAtGeiger, player);
-    --             end
-    --         elseif protectionTypeByMap == "GasMask" then
-    --             context:addOption(getText("ContextMenu_check_gasmask_filter"), item, checkGasMaskFilter, player);
-    --         end
-    --     end
-    -- end
 end
 
 function takeIodinePill(item, player)
