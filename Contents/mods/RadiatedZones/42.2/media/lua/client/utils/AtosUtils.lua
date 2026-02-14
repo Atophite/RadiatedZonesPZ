@@ -102,19 +102,13 @@ end
 
 function AtosClient:playerIsProtectedByClothingType(player)
    local items = player:getWornItems()
-   local isSpeedFrameworkActivated = getActivatedMods():contains("SpeedFramework")
-
    for count = 0, items:size() - 1  do
       local clothingItem = items:getItemByIndex(count)
       local clothingItemType = clothingItem:getType()
       local protectionTypeByMap = AtosConstants.protectionTypeMap[clothingItemType]
 
-      --print(items:getItemByIndex(count):getClothingItemName())
+      -- print(items:getItemByIndex(count):getType())
       if protectionTypeByMap == "HazmatSuit" then
-
-         if isSpeedFrameworkActivated then
-            SpeedFramework.SetPlayerSpeed(player, 0.7)
-         end
 
          if clothingItem:getHolesNumber() < 1
          and clothingItem:getCurrentCondition() > 0 then
@@ -130,10 +124,6 @@ function AtosClient:playerIsProtectedByClothingType(player)
          return protectionTypeByMap
       end
 
-   end
-
-   if isSpeedFrameworkActivated then
-      SpeedFramework.SetPlayerSpeed(player, nil)
    end
    return "Nothing"
 

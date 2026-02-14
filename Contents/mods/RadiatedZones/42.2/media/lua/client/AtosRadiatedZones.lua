@@ -26,8 +26,10 @@ local AtosShared = AtosRadiatedZones.Shared
 local AtosConstants = AtosRadiatedZones.Constants
 
 local function onClothingUpdated(player)
-	--print("clothing update")
-	AtosClient:setGeigerAndProtectMoodle()
+	print("clothing update")
+	-- TODO Fix when this lua events works again.
+	-- The updated clothing still has the old shit instead of the new clothing.
+	-- AtosClient:setGeigerAndProtectMoodle()
 end
 
 local function onGameStart()
@@ -44,7 +46,6 @@ local function onGameStart()
 		--If client is offline, manually read the file
 		print("reading zones file from client side cuz offline")
 		zones = AtosShared:readZonesFile()
-
 	end
 
 	AtosClient:setGeigerAndProtectMoodle()
@@ -74,7 +75,6 @@ local function setBurnDamage()
 		local randomBodyPart = bodyParts:get(randomIndex)
 
 		randomBodyPart:setBurned()
-
 	else
 		-- Handle the case where the array is empty
 		print("No body parts available.")
@@ -90,28 +90,24 @@ local function checkIfPlayerProtectedByPills()
 
 		if currentWorldHour - AtosClient:getIsProtectedByPillsSince() >= pillTotalDuration then
 			AtosClient:setIsProtectedByPills(false)
-			AtosClient:setIodineMoodle(0.5)--float
+			AtosClient:setIodineMoodle(0.5) --float
 			print("The effects of the Iodine Pills has fallen off")
 		elseif currentWorldHour - AtosClient:getIsProtectedByPillsSince() >= pillLowDuration then
-			AtosClient:setIodineMoodle(0.2)--float
+			AtosClient:setIodineMoodle(0.2) --float
 		else
-			AtosClient:setIodineMoodle(1.0)--float
+			AtosClient:setIodineMoodle(1.0) --float
 		end
 	end
 end
 
 local function EveryTenMinutes()
-
 	local player = getPlayer()
-
-	AtosClient:validateZoneWithCivGeiger(player)
 
 	--Check if player is protected by pills
 	checkIfPlayerProtectedByPills()
 
 	--If player is wearing gasmask
-	AtosClient:useGasMask(player)
-
+	-- AtosClient:useGasMask(player)
 end
 
 
@@ -150,8 +146,8 @@ local function EveryDays()
 	if AtosClient:getHasLuckySodaUsage() then
 		print("player drank lucky soda. Chances has been altered.")
 		dieChance = -1 --0%
-		burnChance = 10--10%
-		cureChance = 60--50%
+		burnChance = 10 --10%
+		cureChance = 60 --50%
 		AtosClient:setRadiation(currentRadiation / 1.4)
 		--When day is over lucky soda wears out
 		AtosClient:setHasLuckySodaUsage(false)
@@ -164,28 +160,28 @@ local function EveryDays()
 			print("Player will die from radiation")
 			player:getBodyDamage():setFoodSicknessLevel(100)
 			--player:Kill(player)
-
 		elseif chance <= cureChance then
 			AtosClient:setRadiationCured(true)
 			player:getBodyDamage():setFakeInfectionLevel(0)
 			print("radiation is cured")
 		elseif chance <= burnChance and currentRadiation >= 1000 then
 			print("Burn damage")
-
 		else
 			print("radiation is not cured")
 		end
-
 	end
 end
 
 local function everyOneMinute()
+	-- Bandaid solution.
+	-- onClothingUpdated doesnt work because the devs are dumbasses.
+	AtosClient:setGeigerAndProtectMoodle()
 
 	--If zones are empty
 	--sendClientCommand only works on multiplayer
 	--Wish it was working on onConnected/onGameStart
 	if zones == nil then
-		if(isClient()) then
+		if (isClient()) then
 			print("Requesting zones 2")
 			sendClientCommand("Atos", "RequestAllZones", {
 				player = player
@@ -211,72 +207,70 @@ function AtosClient:setGeigerAndProtectMoodle()
 
 	if AtosClient:isGeigerEquipped(player) and not hasGeiger then
 		hasGeiger = true
-
-
 	elseif not AtosClient:isGeigerEquipped(player) then
 		hasGeiger = false
 	end
 
 	local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
 
+	-- For some reason float 0.5 = off
+	local ON = 1.0
+	local OFF = 0.5
+
 	--TODO optimize
-	if playerIsProtectedByClothingType == "HazmatSuit"  then
+	if playerIsProtectedByClothingType == "HazmatSuit" then
+		print('hazmat')
 		isProtected = true
-		AtosClient:setHazmatMoodle(1.0)
-		AtosClient:setGasMaskMoodle(0.5)
-		AtosClient:setLightMaskMoodle(0.5)
+		AtosClient:setHazmatMoodle(ON)
+		AtosClient:setGasMaskMoodle(OFF)
+		AtosClient:setLightMaskMoodle(OFF)
 	elseif playerIsProtectedByClothingType == "GasMask" then
+		print('gasmask')
 		isProtected = true
-		AtosClient:setGasMaskMoodle(1.0)
-		AtosClient:setHazmatMoodle(0.5)
-		AtosClient:setLightMaskMoodle(0.5)
+		AtosClient:setGasMaskMoodle(ON)
+		AtosClient:setHazmatMoodle(OFF)
+		AtosClient:setLightMaskMoodle(OFF)
 	elseif playerIsProtectedByClothingType == "LightMask" or playerIsProtectedByClothingType == "ClothMask" then
 		isProtected = true
-		AtosClient:setLightMaskMoodle(1.0)
-		AtosClient:setGasMaskMoodle(0.5)
-		AtosClient:setHazmatMoodle(0.5)
+		AtosClient:setLightMaskMoodle(ON)
+		AtosClient:setGasMaskMoodle(OFF)
+		AtosClient:setHazmatMoodle(OFF)
 	else
 		isProtected = false
-		AtosClient:setHazmatMoodle(0.5)
-		AtosClient:setGasMaskMoodle(0.5)
-		AtosClient:setLightMaskMoodle(0.5)
+		AtosClient:setHazmatMoodle(OFF)
+		AtosClient:setGasMaskMoodle(OFF)
+		AtosClient:setLightMaskMoodle(OFF)
 	end
 end
 
-
 function AtosClient:loopZones()
-
 	local player = getPlayer()
-    local playerX, playerY = player:getX(), player:getY()
-    isInZone = false
+	local playerX, playerY = player:getX(), player:getY()
+	isInZone = false
 
-    for i, zone in ipairs(zones) do
-        local zoneXMin, zoneXMax = zone[1][1], zone[1][2]
-        local zoneYMin, zoneYMax = zone[2][1], zone[2][2]
+	for i, zone in ipairs(zones) do
+		local zoneXMin, zoneXMax = zone[1][1], zone[1][2]
+		local zoneYMin, zoneYMax = zone[2][1], zone[2][2]
 
-        if playerX > zoneXMin and playerX < zoneXMax and playerY > zoneYMin and playerY < zoneYMax then
-            isInZone = true
-            break  -- No need to check further if the player is already in a zone
-        end
-    end
+		if playerX > zoneXMin and playerX < zoneXMax and playerY > zoneYMin and playerY < zoneYMax then
+			isInZone = true
+			break -- No need to check further if the player is already in a zone
+		end
+	end
 
-    AtosClient:validateZoneWithGeiger(player)
+	AtosClient:validateZoneWithGeiger(player)
 end
-
 
 function AtosClient:validateZoneWithGeiger(player)
 	-- Check if the player is in the radiation zone
 	if isInZone then
-
 		--Check if its the first time that the player has entered the zone.
 		--To prevent a loop
 		if not hasEnteredZone then
-
 			if AtosClient:isGeigerEquipped(player) then
 				player:Say("Radiation detected!")
 			end
 			hasEnteredZone = true
-			--AtosClient:setGeigerAndProtectMoodle()
 			print("player entered zone")
 
 			---- ----------------------DEBUG SHIT ------------------------
@@ -320,62 +314,6 @@ function AtosClient:validateZoneWithGeiger(player)
 	end
 end
 
-function AtosClient:validateZoneWithCivGeiger()
-	local player = getPlayer()
-	-- Check if the player is in the radiation zone
-	if isInZone then
-
-		--Check if its the first time that the player has entered the zone.
-		--To prevent a loop
-		if not hasEnteredZone then
-
-			if AtosClient:isCivGeigerEquipped(player) and AtosClient:isGeigerEquipped(player) == false then
-				player:Say("Radiation detected!")
-			end
-			hasEnteredZone = true
-			--AtosClient:setGeigerAndProtectMoodle()
-
-			---- ----------------------DEBUG SHIT ------------------------
-			--	local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
-			--	if playerIsProtectedByClothingType == "HazmatSuit"   then
-			--		print("player is wearing hazmat protection")
-			--	elseif playerIsProtectedByClothingType == "GasMask" then
-			--		print("player is wearing gasmask protection")
-			--	elseif playerIsProtectedByClothingType == "LightMask"  then
-			--		print("player is wearing light mask protection like dustmask")
-			--
-			--	elseif playerIsProtectedByClothingType == "ClothMask"  then
-			--		print("player is wearing cloth mask protection like improvised cloth mask")
-			--	else
-			--		print("player is not wearing protection")
-			--	end
-		end
-
-
-		--If the player has a geiger the player can detect the radiation
-		if AtosClient:isCivGeigerEquipped(player) then
-			isRadiationDetected = true
-			AtosClient:playSound()
-		else
-			isRadiationDetected = false
-			AtosClient:stopSound()
-		end
-	else
-		--Check if its the first time that the player has left the zone.
-		--To prevent a loop
-		if hasEnteredZone then
-			print("player has left the radiated zone")
-			AtosClient:stopSound()
-			--Send message to server that player left zone.
-			if AtosClient:isGeigerEquipped(player) then
-				player:Say("Radiation not detected!")
-			end
-
-			hasEnteredZone = false
-		end
-	end
-end
-
 function AtosClient:calculateRadiation()
 	local player = getPlayer()
 
@@ -391,7 +329,6 @@ function AtosClient:calculateRadiation()
 	end
 
 	if isInZone then
-
 		-- Calculate player radiation based on clothing type
 		local radiationValues = AtosConstants.clothingRadiation[playerWearClothingType]
 		if radiationValues then
@@ -399,12 +336,10 @@ function AtosClient:calculateRadiation()
 				--print(radiationValues.withPills)
 				playerRadiation = playerRadiation + radiationValues.withPills
 				--print(playerRadiation)
-
 			else
 				--print(radiationValues.noPills)
 				playerRadiation = playerRadiation + radiationValues.noPills
 				--print(playerRadiation)
-
 			end
 		end
 
@@ -414,18 +349,15 @@ function AtosClient:calculateRadiation()
 	end
 
 
-	if(playerRadiation > 2000) then
-
+	if (playerRadiation > 2000) then
 		--When player reaches 2000 RADS, player will die
 		setSickness(100)
 	elseif playerRadiation > 1000 then
 		setSickness(50)
-
 	elseif playerRadiation > 300 then
 		setSickness(25)
 	else
 		setSickness(0)
-
 	end
 
 	AtosClient:setRadiation(playerRadiation)
@@ -442,7 +374,6 @@ function AtosClient:playSound()
 		geigerSound = player:playSoundLocal("Geiger")
 	elseif geigerSound ~= nil and not player:getEmitter():isPlaying("Geiger") and AtosClient:isGeigerEquipped(player) == true then
 		geigerSound = player:playSoundLocal("Geiger")
-
 	end
 end
 
@@ -459,7 +390,6 @@ function AtosClient:getIsInZone()
 	return isInZone
 end
 
-
 Events.OnClothingUpdated.Add(onClothingUpdated)
 Events.OnGameStart.Add(onGameStart)
 Events.EveryOneMinute.Add(everyOneMinute)
@@ -468,4 +398,3 @@ Events.OnGameBoot.Add(OnGameBoot)
 Events.EveryDays.Add(EveryDays)
 Events.EveryTenMinutes.Add(EveryTenMinutes)
 Events.OnCreateLivingCharacter.Add(OnCreateLivingCharacter)
-

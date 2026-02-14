@@ -22,25 +22,28 @@ local function addExistingItemType(scriptItems, type)
 end
 
 -- Return true if recipe is valid, false otherwise
-function RadiatedZones.OnTest.GeigerTellerBatteriesInsert(sourceItem, result)
+function RadiatedZones.OnTest.GeigerTellerBatteriesInsert(sourceItem)
     if sourceItem:getType() == "GeigerTeller" then
-        return sourceItem:getUsedDelta() == 0; -- Only allow the batteries inserting if the geigerteller has no batteries left in it.
+        return sourceItem:getCurrentUsesFloat() == 0; -- Only allow the batteries inserting if the geigerteller has no batteries left in it.
     end
 
     return true -- the battery
 end
 
-function RadiatedZones.OnCreate.GeigerTellerBatteriesInsert(items, result, player)
+function RadiatedZones.OnCreate.GeigerTellerBatteriesInsert(params)
+    local totalUses = 0
+    local inputItems = params:getAllInputItems()
+    local createdItems = params:getAllCreatedItems()
+    local geiger = createdItems:get(0)
 
-    local totalDelta = 0
-
-    for i=0, items:size()-1 do
-        -- we found the battery, we change his used delta according to the battery
-        if items:get(i):getType() == "Battery" then
-            totalDelta = totalDelta + items:get(i):getUsedDelta() / 4
-            result:setUsedDelta(totalDelta);
+    for i=0, inputItems:size()-1 do
+        -- Found the battery, Change its current uses according to the battery
+        if inputItems:get(i):getType() == "Battery" then
+            totalUses = totalUses + inputItems:get(i):getCurrentUsesFloat() / 4
         end
     end
+    
+    geiger:setCurrentUsesFloat(totalUses)
 end
 
 -- Return true if recipe is valid, false otherwise
@@ -59,33 +62,31 @@ function RadiatedZones.OnCreate.GeigerTellerBatteriesRemove(params)
     local batteryCount = createdItems:size()
     if batteryCount == 0 then return end
 
-    local totalUses = geiger:getCurrentUsesFloat()
-    if totalUses <= 0 then return end
-
-    local usesPerBattery = totalUses / batteryCount
+    local geigerUses = geiger:getCurrentUsesFloat()
+    if geigerUses <= 0 then return end
 
     for i = 0, batteryCount - 1 do
         local battery = createdItems:get(i)
-        battery:setCurrentUsesFloat(usesPerBattery)
+        battery:setCurrentUsesFloat(geigerUses)
     end
-
-    -- Drain the Geiger Teller after distribution
-    geiger:setCurrentUsesFloat(0)
 end
 
-function RadiatedZones.OnTest.GasMaskAirFilterInsert(sourceItem, result)
-    return true
+function RadiatedZones.OnTest.GasMaskAirFilterInsert(sourceItem)
+    return sourceItem:getCurrentUsesFloat() > 0;
 end
 
-function RadiatedZones.OnCreate.GasMaskAirFilterInsert(items, result, player)
+function RadiatedZones.OnCreate.GasMaskAirFilterInsert(items, player)
+    local inputItems = params:getAllInputItems()
+    local createdItems = params:getAllCreatedItems()
 
-    for i=0, items:size()-1 do
-        local item = items:get(i)
-        if items:get(i):getType() == "GasMaskFilter" or items:get(i):getType() == "ImprovisedGasMaskFilter" then
+    for i=0, inputItems:size()-1 do
+        local item = inputItems:get(i)
+        if item:getType() == "GasMaskFilter" or item:getType() == "ImprovisedGasMaskFilter" then
             --AtosClient:setUsedDelta(result, item:getUsedDelta() * 100)
+            dump(item)
+            -- result:setCondition(item:getCurrentUsesFloat() * 10)
 
-            result:setCondition(item:getUsedDelta() * 10)
-            AtosClient:setFilterTicks(result, AtosClient:getFilterTicks(item))
+            -- AtosClient:setFilterTicks(result, AtosClient:getFilterTicks(item))
         end
     end
 

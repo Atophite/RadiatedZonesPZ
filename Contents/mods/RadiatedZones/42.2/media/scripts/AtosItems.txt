@@ -151,22 +151,6 @@ module RadiatedZones {
         Tooltip = Tooltip_item_improvised_mask,
     }
 
-    item CivGeigerTeller
-    {
-        DisplayCategory = Electronics,
-        Weight  =   0.5,
-        ItemType    =   base:drainable,
-        UseWhileEquipped	=	TRUE,
-        ActivatedItem	=	TRUE,
-        KeepOnDeplete = TRUE,
-        DisplayName =   Civillian Geiger Teller,
-        Icon            = CivGeigerteller,
-        Tooltip = Tooltip_item_civ_geigerteller,
-        StaticModel     = WalkieTalkieValue,
-        WorldStaticModel = CivGeigerteller,
-        ticksPerEquipUse = 5000,
-    }
-
     item DosiMeter
     {
         DisplayCategory = Electronics,
@@ -183,9 +167,6 @@ module RadiatedZones {
         WorldStaticModel = CivGeigerteller,
         ticksPerEquipUse = 5000,
     }
-
-
-
 }
 
 module Base {
@@ -208,21 +189,33 @@ module Base {
         Tooltip = Tooltip_item_hazmat,
     }
 
-    item Hat_GasMask
-    	{
-    	    DisplayCategory = Accessory,
-    		ItemType = base:clothing,
-    		DisplayName = Gas Mask,
-    		ClothingItem = Hat_GasMask,
-    		BodyLocation = MaskEyes,
-    		Icon = GasMask,
-    		CanHaveHoles = false,
-            BloodLocation = Head,
-            Insulation = 0.75,
-            WindResistance = 0.60,
-            WaterResistance = 1.0,
-    		Tags = GasMask,
-    		Weight = 0.5,
-    		Tooltip = Tooltip_item_gasmask,
-    	}
+    item GasmaskFilter
+    {
+        DisplayCategory = Accessory,
+        ItemType = base:drainable,
+        Weight = 0.3,
+        Icon = GasmaskFilter,
+        UseDelta = 0.1,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        WorldStaticModel = GasmaskFilter,
+        Tags = base:gasmaskfilter;base:hasmetal,
+        KeepOnDeplete = true,
+        Researchablerecipes = MakeCraftedGasMaskFilter;RechargeFilters;MakeImprovisedGasMask,
+    }
+
+    item Oxygen_Tank
+    {
+        DisplayCategory = Accessory,
+        ItemType = base:drainable,
+        Weight = 5.0,
+        WeightEmpty = 5.0,
+        Icon = OxygenTank,
+        UseDelta = 0.0325,
+        UseWhileEquipped = false,
+        cantBeConsolided = true,
+        KeepOnDeplete = true,
+        WorldStaticModel = Oxygen_Tank_Ground,
+        Tags = base:hasmetal;base:oxygentank;base:smeltableironsmall,
+    }
 }

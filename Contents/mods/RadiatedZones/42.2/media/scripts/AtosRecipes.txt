@@ -11,8 +11,11 @@ module RadiatedZones {
 
         inputs
         {
-            item 1 [RadiatedZones.EmptyGeigerTeller] mode:destroy,
-            item 4 [Base.Battery] mode:destroy,
+            item 1 [RadiatedZones.GeigerTeller;RadiatedZones.EmptyGeigerTeller] mode:destroy,
+            item 1 [Base.Battery] mode:destroy,
+            item 1 [Base.Battery] mode:destroy,
+            item 1 [Base.Battery] mode:destroy,
+            item 1 [Base.Battery] mode:destroy,
         }
 
         outputs
@@ -23,7 +26,7 @@ module RadiatedZones {
 
     craftRecipe RemoveBatteriesFromGeigerTeller
     {
-        timedAction = DismantleElectrical,
+        timedAction = Making,
         time = 200,
         Category = Electrical,
         OnTest = RadiatedZones.OnTest.GeigerTellerBatteriesRemove,
@@ -32,53 +35,13 @@ module RadiatedZones {
 
         inputs
         {
-            item 1 [RadiatedZones.GeigerTeller] mode:keep,
+            item 1 [RadiatedZones.GeigerTeller] mode:destroy,
         }
 
         outputs
         {
-            item 1 Base.Battery,
-        }
-    }
-
-    craftRecipe RemoveGasMaskFilter
-    {
-        timedAction = Making,
-        time = 150,
-        Category = Miscellaneous,
-        OnTest = RadiatedZones.OnTest.GasMaskAirFilterRemove,
-        OnCreate = RadiatedZones.OnCreate.GasMaskAirFilterRemove,
-        Tags = InHandCraft,
-
-        inputs
-        {
-            item 1 [Base.Hat_GasMask],
-        }
-
-        outputs
-        {
-            item 1 Base.Hat_GasMask,
-        }
-    }
-
-    craftRecipe InsertGasMaskFilter
-    {
-        timedAction = Making,
-        time = 150,
-        Category = Miscellaneous,
-        OnTest = RadiatedZones.OnTest.GasMaskAirFilterInsert,
-        OnCreate = RadiatedZones.OnCreate.GasMaskAirFilterInsert,
-        Tags = InHandCraft,
-
-        inputs
-        {
-            item 1 [Base.Hat_GasMask_nofilter] mode:destroy,
-            item 1 [Base.GasmaskFilter;RadiatedZones.ImprovisedGasMaskFilter] mode:destroy,
-        }
-
-        outputs
-        {
-            item 1 Base.Hat_GasMask,
+            item 1 RadiatedZones.EmptyGeigerTeller,
+            item 4 Base.Battery,
         }
     }
 
@@ -93,9 +56,9 @@ module RadiatedZones {
 
         inputs
         {
+            item 1 [Base.HazmatSuit] mode:destroy,
             item 1 [Base.Scissors] mode:keep,
-            item 1 [Base.HazmatSuit],
-            item 2 [Base.DuctTape],
+            item 2 [Base.DuctTape] mode:destroy,
         }
 
         outputs
@@ -113,7 +76,7 @@ module RadiatedZones {
 
         inputs
         {
-            item 1 [Base.RippedSheets],
+            item 1 [Base.RippedSheets] mode:destroy,
         }
 
         outputs

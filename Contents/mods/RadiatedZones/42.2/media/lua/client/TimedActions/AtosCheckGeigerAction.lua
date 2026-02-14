@@ -10,7 +10,7 @@ AtosIsCheckGeigerAction = ISBaseTimedAction:derive("AtosIsCheckGeigerAction");
 local AtosClient = AtosRadiatedZones.Client
 
 function AtosIsCheckGeigerAction:isValid() -- Check if the action can be done
-local currentUseDelta = self.item:getUseDelta()
+    local currentUseDelta = self.item:getCurrentUsesFloat()
 
     if currentUseDelta <= 0 then
         self.character:Say(getText("ContextMenu_out_of_battery"))
@@ -58,7 +58,7 @@ function AtosIsCheckGeigerAction:perform() -- Trigger when the action is complet
     ISBaseTimedAction.perform(self);
 end
 
-function AtosIsCheckGeigerAction:new(character, item) -- What to call in you code
+function AtosIsCheckGeigerAction:new(character, item)
     local o = {};
     setmetatable(o, self);
     self.__index = self;

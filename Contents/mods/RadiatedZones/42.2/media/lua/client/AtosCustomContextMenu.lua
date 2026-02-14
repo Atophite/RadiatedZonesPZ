@@ -12,7 +12,7 @@ local function doMenu(player, context, items)
         local protectionTypeByMap = AtosConstants.protectionTypeMap[itemType]
         if itemName then
             if itemName == "Geiger Teller" then
-                if item:getUseDelta() then
+                if item:getCurrentUsesFloat() > 0 then
                     context:addOption(getText("ContextMenu_measure_radiation"), item, measureRadiation, player);
                     context:addOption(getText("ContextMenu_check_geiger"), item, lookAtGeiger, player);
                 end
